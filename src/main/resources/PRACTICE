@@ -1,0 +1,139 @@
+1.create database
+// use address_db
+2.create collection
+// db.createCollection("Address")
+3.Inset
+// db.address_db.insertMany([{streetName:"main divine street",city:"New york",zip:123123},{streetName:"2nd Street",city:"New york",zip:112233},{streetName:"James street",city:"New york",zip:122343},{streetName:"jordans 2nd Street",city:"rochester",zip:098765},{streetName:"2isaac street",city:"rochester",zip:990088},{streeetName:"Mondela colony",city:"kingston",zip:009977},{streetName:"Divine corner",city:"kingston",zip:112212}])
+4.Display all
+//  db.address_db.find()
+   [
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a812"),
+       streetName: 'main divine street',
+       city: 'New york',
+       zip: 123123
+     },
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a813"),
+       streetName: '2nd Street',
+       city: 'New york',
+       zip: 112233
+     },
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a814"),
+       streetName: 'James street',
+       city: 'New york',
+       zip: 122343
+     },
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a815"),
+       streetName: 'jordans 2nd Street',
+       city: 'rochester',
+       zip: 98765
+     },
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a816"),
+       streetName: '2isaac street',
+       city: 'rochester',
+       zip: 990088
+     },
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a817"),
+       streeetName: 'Mondela colony',
+       city: 'kingston',
+       zip: 9977
+     },
+     {
+       _id: ObjectId("63ac1ee52e8b9de93df0a818"),
+       streetName: 'Divine corner',
+       city: 'kingston',
+       zip: 112212
+     }
+   ]
+4. find by city rochester
+   //db.address_db.find({city:"rochester"})
+     [
+       {
+         _id: ObjectId("63ac1ee52e8b9de93df0a815"),
+         streetName: 'jordans 2nd Street',
+         city: 'rochester',
+         zip: 98765
+       },
+       {
+         _id: ObjectId("63ac1ee52e8b9de93df0a816"),
+         streetName: '2isaac street',
+         city: 'rochester',
+         zip: 990088
+       }
+     ]
+5. count the no of address from new york
+    // db.address_db.find({city:{$eq:"New york"}})
+       [
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a812"),
+           streetName: 'main divine street',
+           city: 'New york',
+           zip: 123123
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a813"),
+           streetName: '2nd Street',
+           city: 'New york',
+           zip: 112233
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a814"),
+           streetName: 'James street',
+           city: 'New york',
+           zip: 122343
+         }
+       ]
+6.  count the address by the city new york,rochester,kingston
+    // db.address_db.find({city:{$in:["New york","kingston","rochester"]}})
+       [
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a812"),
+           streetName: 'main divine street',
+           city: 'New york',
+           zip: 123123
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a813"),
+           streetName: '2nd Street',
+           city: 'New york',
+           zip: 112233
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a814"),
+           streetName: 'James street',
+           city: 'New york',
+           zip: 122343
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a815"),
+           streetName: 'jordans 2nd Street',
+           city: 'rochester',
+           zip: 98765
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a816"),
+           streetName: '2isaac street',
+           city: 'rochester',
+           zip: 990088
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a817"),
+           streeetName: 'Mondela colony',
+           city: 'kingston',
+           zip: 9977
+         },
+         {
+           _id: ObjectId("63ac1ee52e8b9de93df0a818"),
+           streetName: 'Divine corner',
+           city: 'kingston',
+           zip: 112212
+         }
+       ]
+7. Delete all the city with the name new york
+    //  db.address_db.deleteMany({city:"New york"})
+       { acknowledged: true, deletedCount: 3 }
